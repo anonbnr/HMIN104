@@ -1,3 +1,3 @@
-abstract class BinOp extends Operateur{
+abstract class BinOp extends Expression{
   Expression operandeG, operandeD;
 }

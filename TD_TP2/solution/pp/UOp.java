@@ -1,3 +1,3 @@
-abstract class UOp extends Operateur{
+abstract class UOp extends Expression{
   Expression operande;
 }
