@@ -12,8 +12,8 @@ definition:
 instruction:
   variable ASSIGNMENT expression
   |expression'['expression']' ASSIGNMENT expression
-  |IF expression THEN instruction ELSE instruction
-  |WHILE expression DO instruction
+  |IF expression THEN instruction ELSE '{'instruction'}'
+  |WHILE expression DO '{'instruction'}'
   |cible'('expression*')'
   |SK
   |instruction';'instruction;
@@ -26,8 +26,8 @@ fonction: ID;
 expression returns [Expression value]:
   constante
   |variable
-  |'-'c = constante {$value = new Inv($c.E);}
-  |LOGNOT c = constante {$value = new Not($c.E);}
+  |'-'e = expression {$value = new Inv($e.value);}
+  |LOGNOT e = expression {$value = new Not($e.value);}
   |expression bop expression
   |cible'('expression*')'
   |expression'['expression']'
