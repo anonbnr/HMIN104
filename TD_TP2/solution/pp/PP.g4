@@ -1,12 +1,12 @@
-grammar pp;
+grammar PP;
 /*GRAMMAR RULES*/
 programme:
   (declaration)?
   (definition)*
   instruction;
-declaration: VAR (variable : type)+;
+declaration: VAR (variable ':' type)+;
 definition:
-  fonction'('(variable : type)*')' (: type)?
+  fonction'('(variable ':' type)*')' (':' type)?
   (declaration)?
   instruction;
 instruction:
@@ -15,19 +15,19 @@ instruction:
   |IF expression THEN instruction ELSE instruction
   |WHILE expression DO instruction
   |cible'('expression*')'
-  |SKIP
+  |SK
   |instruction';'instruction;
 variable: ID;
 type returns [Type T]:
   INT {$T = new Int();}
   |BOOL {$T = new Bool();}
-  |ARRAY t = type {$T = new Array($t.value);};
+  |ARRAY t = type {$T = new Array($t.T);};
 fonction: ID;
 expression returns [Expression value]:
   constante
   |variable
-  |INVERSE c = constante {$value = new Inv($c.C);}
-  |LOGNOT c = constante {$value = new Not($c.C);}
+  |'-'c = constante {$value = new Inv($c.E);}
+  |LOGNOT c = constante {$value = new Not($c.E);}
   |expression bop expression
   |cible'('expression*')'
   |expression'['expression']'
@@ -36,9 +36,10 @@ cible:
   IN
   |OUT
   |fonction;
-constante returns [Constante C]:
-  LITENT {$C = new ConstanteInt(Integer.parseInt(LITENT));}
-  |LITBOOL {$C = new ConstanteBool(Boolean.parseBoolean(LITBOOL));};
+constante returns [Expression E]:
+  LITENT {$E = new Constante(LITENT);}
+  |LITTRUE {$E = new ConstanteTrue();}
+  |LITFALSE {$E = new ConstanteFalse();};
 bop:
   ADD
   |SUB
@@ -65,10 +66,9 @@ THEN: 'then';
 ELSE: 'else';
 WHILE: 'while';
 DO: 'do';
-SKIP: 'skip';
+SK: 'skip';
 ASSIGNMENT: ':=';
 ARRAY_ALLOCATION: 'new';
-INVERSE: '-';
 LOGNOT: 'not';
 MUL: '*';
 DIV: '/';
@@ -82,7 +82,8 @@ EQU: '=';
 DIFF: '!=';
 GTH: '>';
 GTEQ: '>=';
-LITBOOL: 'true'|'false';
-LITENT: 0|[1-9]([1-9])*;
-ID: [a-z]+;
+LITTRUE: 'true';
+LITFALSE: 'false';
+LITENT: '0'|[1-9]([1-9])*;
+ID: [a-zA-Z0-9]+;
 WS: [ \t\r\n] -> skip;

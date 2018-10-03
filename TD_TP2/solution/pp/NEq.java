@@ -1,11 +1,8 @@
 class NEq extends BinOp{
-  NEq(ConstanteInt iog, ConstanteInt iod){
-    this.operandeG = iog;
-    this.operandeD = iod;
+  NEq(Expression og, Expression od){
+    this.operandeG = og;
+    this.operandeD = od;
   }
 
-  NEq(ConstanteBool bog, ConstanteBool bod){
-    this.operandeG = bog;
-    this.operandeD = bod;
-  }
+  public String toString(){return this.operandeG + " != " + this.operandeD;}
 }

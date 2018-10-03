@@ -1,5 +1,7 @@
 class Inv extends UOp{
-  Inv(ConstanteInt op){
+  Inv(Expression op){
     this.operande = op;
   }
+
+  public String toString(){return "-" + this.operande;}
 }

@@ -1,6 +1,8 @@
 class Add extends BinOp{
-  Add(ConstanteInt og, ConstanteInt od){
+  Add(Expression og, Expression od){
     this.operandeG = og;
     this.operandeD = od;
   }
+
+  public String toString(){return this.operandeG + " + " + this.operandeD;}
 }

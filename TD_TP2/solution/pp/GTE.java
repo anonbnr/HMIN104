@@ -1,6 +1,8 @@
 class GTE extends BinOp{
-  GTE(ConstanteInt og, ConstanteInt od){
+  GTE(Expression og, Expression od){
     this.operandeG = og;
     this.operandeD = od;
   }
+
+  public String toString(){return this.operandeG + " >= " + this.operandeD;}
 }

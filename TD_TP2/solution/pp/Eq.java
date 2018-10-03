@@ -1,11 +1,8 @@
 class Eq extends BinOp{
-  Eq(ConstanteInt iog, ConstanteInt iod){
-    this.operandeG = iog;
-    this.operandeD = iod;
+  Eq(Expression og, Expression od){
+    this.operandeG = og;
+    this.operandeD = od;
   }
 
-  Eq(ConstanteBool bog, ConstanteBool bod){
-    this.operandeG = bog;
-    this.operandeD = bod;
-  }
+  public String toString(){return this.operandeG + " = " + this.operandeD;}
 }

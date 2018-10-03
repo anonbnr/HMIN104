@@ -1,5 +1,7 @@
 class Not extends UOp{
-  Not(ConstanteInt op){
+  Not(Expression op){
     this.operande = op;
   }
+
+  public String toString(){return "not(" + this.operande + ")";}
 }

@@ -1,4 +1,4 @@
-ANTLR=java -jar /usr/local/lib/antlr-4.6-complete.jar
+ANTLR=java -jar /usr/local/lib/antlr-4.7.1-complete.jar
 JAVAC=javac
 G4=PP.g4
 
