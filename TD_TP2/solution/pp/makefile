@@ -4,7 +4,7 @@ G4=PP.g4
 
 bin:
 	$(ANTLR) $(G4);
-	tmp=`basename $$(G4) .g4`;
+	tmp=`basename $(G4) .g4`;
 	$(JAVAC) $$tmp*.java;
 
 clean:

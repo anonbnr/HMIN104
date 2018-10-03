@@ -27,6 +27,16 @@ public interface PPListener extends ParseTreeListener {
 	 */
 	void exitDeclaration(PPParser.DeclarationContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link PPParser#var}.
+	 * @param ctx the parse tree
+	 */
+	void enterVar(PPParser.VarContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PPParser#var}.
+	 * @param ctx the parse tree
+	 */
+	void exitVar(PPParser.VarContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link PPParser#definition}.
 	 * @param ctx the parse tree
 	 */

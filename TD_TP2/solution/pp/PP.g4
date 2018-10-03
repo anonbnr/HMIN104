@@ -1,12 +1,18 @@
 grammar PP;
 /*GRAMMAR RULES*/
-programme:
-  (declaration)?
+programme returns [Programme p]
+  @init{$p = new Programme();}:
+  (g = declaration {$p.globals = $g.variables;})?
   (definition)*
   instruction;
-declaration: VAR (variable ':' type)+;
+declaration returns [ArrayList<Pair<String,Type>> variables]
+  @init{$variables = new ArrayList<Pair<String,Type>>();}:
+  VAR (v = var {$variables.add($v.pair);})+;
+var returns [Pair<String,Type> pair]
+  @init{$pair = new Pair<String,Type>();}:
+  s = variable {$pair.left = $s.text;} ':' t = type {$pair.right = $t.T;};
 definition:
-  fonction'('(variable ':' type)*')' (':' type)?
+  fonction'('(var)*')' (':' type)?
   (declaration)?
   instruction;
 instruction:
@@ -22,7 +28,9 @@ type returns [Type T]:
   INT {$T = new Int();}
   |BOOL {$T = new Bool();}
   |ARRAY t = type {$T = new Array($t.T);};
-fonction: ID;
+fonction returns [Fonction f]
+@init{$f = new Fonction();}:
+  name = ID {$f.name = $name.text;};
 expression returns [Expression value]:
   constante
   |variable

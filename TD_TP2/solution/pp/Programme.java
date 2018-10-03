@@ -5,6 +5,11 @@ class Programme{
   ArrayList<Definition> defs;
   Instruction code;
 
+  Programme(){
+    globals = new ArrayList<Pair<String, Type>>();
+    defs = new ArrayList<Definition>();
+  }
+
   Programme(ArrayList<Pair<String, Type>> globals, ArrayList<Definition> defs, Instruction code){
     this.globals = globals;
     this.defs = defs;
@@ -17,10 +22,10 @@ class Programme{
     for (Pair<String, Type> var: globals)
       result += "var " + var.left + " : " + var.right + "\n";
 
-    for (Definition def : defs)
-      result += def.toString();
-
-    result += code.toString();
+    // for (Definition def : defs)
+    //   result += def.toString();
+    //
+    // result += code.toString();
 
     return result;
   }
