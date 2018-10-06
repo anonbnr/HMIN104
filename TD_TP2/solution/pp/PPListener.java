@@ -67,6 +67,16 @@ public interface PPListener extends ParseTreeListener {
 	 */
 	void exitAffectation(PPParser.AffectationContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link PPParser#arrayaffectation}.
+	 * @param ctx the parse tree
+	 */
+	void enterArrayaffectation(PPParser.ArrayaffectationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PPParser#arrayaffectation}.
+	 * @param ctx the parse tree
+	 */
+	void exitArrayaffectation(PPParser.ArrayaffectationContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link PPParser#condition}.
 	 * @param ctx the parse tree
 	 */
@@ -76,6 +86,16 @@ public interface PPListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCondition(PPParser.ConditionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PPParser#boucle}.
+	 * @param ctx the parse tree
+	 */
+	void enterBoucle(PPParser.BoucleContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PPParser#boucle}.
+	 * @param ctx the parse tree
+	 */
+	void exitBoucle(PPParser.BoucleContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link PPParser#variable}.
 	 * @param ctx the parse tree
@@ -117,6 +137,26 @@ public interface PPListener extends ParseTreeListener {
 	 */
 	void exitCible(PPParser.CibleContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link PPParser#procappel}.
+	 * @param ctx the parse tree
+	 */
+	void enterProcappel(PPParser.ProcappelContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PPParser#procappel}.
+	 * @param ctx the parse tree
+	 */
+	void exitProcappel(PPParser.ProcappelContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PPParser#fonctappel}.
+	 * @param ctx the parse tree
+	 */
+	void enterFonctappel(PPParser.FonctappelContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PPParser#fonctappel}.
+	 * @param ctx the parse tree
+	 */
+	void exitFonctappel(PPParser.FonctappelContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link PPParser#constante}.
 	 * @param ctx the parse tree
 	 */
@@ -126,14 +166,4 @@ public interface PPListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitConstante(PPParser.ConstanteContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link PPParser#bop}.
-	 * @param ctx the parse tree
-	 */
-	void enterBop(PPParser.BopContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PPParser#bop}.
-	 * @param ctx the parse tree
-	 */
-	void exitBop(PPParser.BopContext ctx);
 }

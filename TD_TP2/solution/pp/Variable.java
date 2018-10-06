@@ -3,5 +3,5 @@ class Variable extends Expression{
 
   Variable(String name){this.name = name;}
 
-  public String toString(){return "variable nommée " + this.name;}
+  public String toString(){return this.name;}
 }

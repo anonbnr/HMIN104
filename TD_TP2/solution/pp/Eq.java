@@ -1,4 +1,9 @@
 class Eq extends BinOp{
+  Eq(Expression og){
+    this.operandeG = og;
+    this.operandeD = null;
+  }
+
   Eq(Expression og, Expression od){
     this.operandeG = og;
     this.operandeD = od;

@@ -1,4 +1,10 @@
 class Mul extends BinOp{
+
+  Mul(Expression og){
+    this.operandeG = og;
+    this.operandeD = null;
+  }
+
   Mul(Expression og, Expression od){
     this.operandeG = og;
     this.operandeD = od;

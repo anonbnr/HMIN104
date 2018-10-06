@@ -5,7 +5,7 @@ class Procedure extends Definition{
   Procedure(){
     super();
   }
-  
+
   Procedure(String name, ArrayList<Pair<String, Type>> args, ArrayList<Pair<String, Type>> locals, Instruction code){
     super(name, args, locals, code);
   }

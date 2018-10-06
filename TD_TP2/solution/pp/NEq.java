@@ -1,4 +1,9 @@
 class NEq extends BinOp{
+  NEq(Expression og){
+    this.operandeG = og;
+    this.operandeD = null;
+  }
+
   NEq(Expression og, Expression od){
     this.operandeG = og;
     this.operandeD = od;

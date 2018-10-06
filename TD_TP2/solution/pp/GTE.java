@@ -1,4 +1,10 @@
 class GTE extends BinOp{
+
+  GTE(Expression og){
+    this.operandeG = og;
+    this.operandeD = null;
+  }
+
   GTE(Expression og, Expression od){
     this.operandeG = og;
     this.operandeD = od;

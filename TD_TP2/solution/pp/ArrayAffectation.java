@@ -1,5 +1,11 @@
-class ArrayAffectation{
+class ArrayAffectation extends Instruction{
   Expression arr, index, val;
+
+  ArrayAffectation(){
+    this.arr = null;
+    this.index = null;
+    this.val = null;
+  }
 
   ArrayAffectation(Expression arr, Expression index, Expression val){
     this.arr = arr;

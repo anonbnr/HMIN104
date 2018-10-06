@@ -36,7 +36,7 @@ abstract class Definition{
     for (Pair<String, Type> l : locals)
       result += "var " + l.left + " : " + l.right + "\n";
 
-    result += code.toString();
+    result += code.toString() + "\n";
 
     return result;
   }
