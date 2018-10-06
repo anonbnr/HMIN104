@@ -27,15 +27,15 @@ public interface PPListener extends ParseTreeListener {
 	 */
 	void exitDeclaration(PPParser.DeclarationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link PPParser#var}.
+	 * Enter a parse tree produced by {@link PPParser#pairvar}.
 	 * @param ctx the parse tree
 	 */
-	void enterVar(PPParser.VarContext ctx);
+	void enterPairvar(PPParser.PairvarContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link PPParser#var}.
+	 * Exit a parse tree produced by {@link PPParser#pairvar}.
 	 * @param ctx the parse tree
 	 */
-	void exitVar(PPParser.VarContext ctx);
+	void exitPairvar(PPParser.PairvarContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link PPParser#definition}.
 	 * @param ctx the parse tree
@@ -57,6 +57,26 @@ public interface PPListener extends ParseTreeListener {
 	 */
 	void exitInstruction(PPParser.InstructionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link PPParser#affectation}.
+	 * @param ctx the parse tree
+	 */
+	void enterAffectation(PPParser.AffectationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PPParser#affectation}.
+	 * @param ctx the parse tree
+	 */
+	void exitAffectation(PPParser.AffectationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PPParser#condition}.
+	 * @param ctx the parse tree
+	 */
+	void enterCondition(PPParser.ConditionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PPParser#condition}.
+	 * @param ctx the parse tree
+	 */
+	void exitCondition(PPParser.ConditionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link PPParser#variable}.
 	 * @param ctx the parse tree
 	 */
@@ -76,16 +96,6 @@ public interface PPListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitType(PPParser.TypeContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link PPParser#fonction}.
-	 * @param ctx the parse tree
-	 */
-	void enterFonction(PPParser.FonctionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link PPParser#fonction}.
-	 * @param ctx the parse tree
-	 */
-	void exitFonction(PPParser.FonctionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link PPParser#expression}.
 	 * @param ctx the parse tree

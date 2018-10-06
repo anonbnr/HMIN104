@@ -39,13 +39,13 @@ public class PPBaseListener implements PPListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVar(PPParser.VarContext ctx) { }
+	@Override public void enterPairvar(PPParser.PairvarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVar(PPParser.VarContext ctx) { }
+	@Override public void exitPairvar(PPParser.PairvarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -75,6 +75,30 @@ public class PPBaseListener implements PPListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterAffectation(PPParser.AffectationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAffectation(PPParser.AffectationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCondition(PPParser.ConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCondition(PPParser.ConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterVariable(PPParser.VariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -94,18 +118,6 @@ public class PPBaseListener implements PPListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitType(PPParser.TypeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterFonction(PPParser.FonctionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFonction(PPParser.FonctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

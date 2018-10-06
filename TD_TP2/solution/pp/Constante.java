@@ -3,5 +3,5 @@ class Constante extends Expression{
 
   Constante(int value){this.value = value;}
 
-  public String toString(){return "expression valant " + this.value;}
+  public String toString(){return "" + this.value;}
 }

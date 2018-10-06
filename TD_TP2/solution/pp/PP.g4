@@ -3,37 +3,47 @@ grammar PP;
 programme returns [Programme p]
   @init{$p = new Programme();}:
   (g = declaration {$p.globals = $g.variables;})?
-  (definition)*
-  instruction;
+  (def = definition {$p.defs.add($def.d);})*
+  inst = instruction {$p.code = $inst.i;};
 declaration returns [ArrayList<Pair<String,Type>> variables]
   @init{$variables = new ArrayList<Pair<String,Type>>();}:
-  VAR (v = var {$variables.add($v.pair);})+;
-var returns [Pair<String,Type> pair]
+  VAR (v = pairvar {$variables.add($v.pair);})+;
+pairvar returns [Pair<String,Type> pair]
   @init{$pair = new Pair<String,Type>();}:
-  s = variable {$pair.left = $s.text;} ':' t = type {$pair.right = $t.T;};
-definition:
-  fonction'('(var)*')' (':' type)?
-  (declaration)?
-  instruction;
-instruction:
-  variable ASSIGNMENT expression
-  |expression'['expression']' ASSIGNMENT expression
-  |IF expression THEN instruction ELSE '{'instruction'}'
+  s = variable {$pair.left = $s.v.name;} ':' t = type {$pair.right = $t.T;};
+definition returns [Definition d]
+  @init{$d = new Procedure();}:
+  name = ID {$d.name = $name.text;}
+  '('(arg = pairvar {$d.args.add($arg.pair);})*')'
+  (':' t = type {$d = new Fonction($d.name, $d.args, $t.T);})?
+  (loc = declaration {$d.locals = $loc.variables;})?
+  inst = instruction {$d.code = $inst.i;};
+instruction returns [Instruction i]:
+  a = affectation {$i = $a.a;}
+  |cond = condition {$i = $cond.c;}
   |WHILE expression DO '{'instruction'}'
+  |expression'['expression']' ASSIGNMENT expression
   |cible'('expression*')'
   |SK
   |instruction';'instruction;
-variable: ID;
+affectation returns [Affectation a]
+  @init{$a = new Affectation();}:
+  v = variable {$a.name = $v.v.name;}
+  ASSIGNMENT e = expression {$a.val = $e.value;};
+condition returns [Condition c]
+  @init{$c = new Condition();}:
+  IF e = expression {$c.cond = $e.value;}
+  THEN inst1 = instruction {$c.i1 = $inst1.i;}
+  ELSE '{'inst2 = instruction {$c.i2 = $inst2.i;}'}';
+variable returns [Variable v]:
+  name = ID {$v = new Variable($name.text);};
 type returns [Type T]:
   INT {$T = new Int();}
   |BOOL {$T = new Bool();}
   |ARRAY t = type {$T = new Array($t.T);};
-fonction returns [Fonction f]
-@init{$f = new Fonction();}:
-  name = ID {$f.name = $name.text;};
 expression returns [Expression value]:
-  constante
-  |variable
+  c = constante {$value = $c.E;}
+  |v = variable {$value = $v.v;}
   |'-'e = expression {$value = new Inv($e.value);}
   |LOGNOT e = expression {$value = new Not($e.value);}
   |expression bop expression
@@ -43,9 +53,9 @@ expression returns [Expression value]:
 cible:
   IN
   |OUT
-  |fonction;
+  |ID;
 constante returns [Expression E]:
-  LITENT {$E = new Constante(LITENT);}
+  c = LITENT {$E = new Constante(Integer.parseInt($c.text));}
   |LITTRUE {$E = new ConstanteTrue();}
   |LITFALSE {$E = new ConstanteFalse();};
 bop:
