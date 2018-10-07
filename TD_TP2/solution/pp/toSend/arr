@@ -8,6 +8,6 @@ while i < taille do{
   i := i + 1
 }
 
-write("Veuillez saisir la taille de votre tableau : ");
+write();
 n := read();
 initialiser(n)
