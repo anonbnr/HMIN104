@@ -1,0 +1,13 @@
+var n : integer 
+
+initialiser(tab : array of integer taille : integer) 
+var i : integer
+i := 0;
+while i < taille do{
+  tab[i] := 0;
+  i := i + 1
+}
+
+write("Veuillez saisir la taille de votre tableau : ");
+n := read();
+initialiser(n)

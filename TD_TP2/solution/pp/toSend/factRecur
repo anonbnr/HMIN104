@@ -1,0 +1,7 @@
+recFact(n : integer) : integer
+if n = 0 then
+  recFact := 1
+else{
+  recFact := n * recFact(n-1)
+}
+x := 4

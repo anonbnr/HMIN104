@@ -1,0 +1,13 @@
+positif(tab : array of integer taille : integer)
+var i : integer
+i := 0;
+positif := true;
+while i < taille do{
+  if tab[i] < 0 then
+    positif := false;
+    i := taille
+  else{
+    i := i + 1
+  }
+}
+x := 4
