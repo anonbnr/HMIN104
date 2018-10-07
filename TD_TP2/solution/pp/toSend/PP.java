@@ -5,9 +5,13 @@ import java.util.*;
  */
 abstract class Type{}
 
-class Int extends Type {}
+class Int extends Type {
+  public String toString(){return "integer";}
+}
 
-class Bool extends Type {}
+class Bool extends Type {
+  public String toString(){return "boolean";}
+}
 
 class Array extends Type{
   Type type;
