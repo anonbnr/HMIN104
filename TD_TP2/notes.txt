@@ -1,0 +1,17 @@
+definition returns [Definition d]:
+  proc = procedure {$d = new Procedure($proc.p.name, $proc.p.args, $proc.p.locals, $proc.p.code);}
+  |func = fonction {$d = new Fonction($func.f.name, $func.f.args, $func.f.locals, $func.f.code, $func.f.ret);};
+
+fonction returns [Fonction f]
+  @init{$f = new Fonction();}:
+  name = ID {$f.name = $name.text;}
+  '('(arg = pairvar {$f.args.add($arg.pair);})*') : ' t = type {$f.ret = $t.T;}
+  (loc = declaration {$f.locals = $loc.variables;})?
+  inst = instruction {$f.code = $inst.i;};
+
+procedure returns [Procedure p]
+  @init{$p = new Procedure();}:
+  name = ID {$p.name = $name.text;}
+  '('(arg = pairvar {$p.args.add($arg.pair);})*')'
+  (loc = declaration {$p.locals = $loc.variables;})?
+  inst = instruction {$p.code = $inst.i;};

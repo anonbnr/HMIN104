@@ -46,6 +46,12 @@ boucle returns [While w]
   @init{$w = new While();}:
   WHILE e = expression {$w.cond = $e.value;}
   DO '{'inst = instruction {$w.i = $inst.i;}'}';
+variable returns [Variable v]:
+  name = ID {$v = new Variable($name.text);};
+type returns [Type T]:
+  INT {$T = new Int();}
+  |BOOL {$T = new Bool();}
+  |ARRAY t = type {$T = new Array($t.T);};
 expression returns [Expression value]:
   c = constante {$value = $c.E;}
   |v = variable {$value = $v.v;}
@@ -102,12 +108,6 @@ procappel returns [ProcedureAppel pa]
 fonctappel returns [FonctionAppel fa]
   @init{$fa = new FonctionAppel();}:
   c = cible {$fa.cible = $c.c;}'('(e = expression {$fa.args.add($e.value);})*')';
-type returns [Type T]:
-  INT {$T = new Int();}
-  |BOOL {$T = new Bool();}
-  |ARRAY t = type {$T = new Array($t.T);};
-variable returns [Variable v]:
-  name = ID {$v = new Variable($name.text);};
 constante returns [Expression E]:
   c = LITENT {$E = new Constante(Integer.parseInt($c.text));}
   |LITTRUE {$E = new ConstanteTrue();}
