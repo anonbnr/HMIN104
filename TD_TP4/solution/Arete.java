@@ -1,5 +1,3 @@
-package tp4;
-
 public class Arete implements Cloneable{
 	/*attributes*/
 	private Sommet first, second;
@@ -22,7 +20,7 @@ public class Arete implements Cloneable{
 	public String toString(){
 		return "(" + this.first + ", " + this.second + ")";
 	}
-	
+
 	//clone
 	@Override
 	public Object clone() throws CloneNotSupportedException{
@@ -42,7 +40,7 @@ public class Arete implements Cloneable{
 	public boolean isIncidente(Sommet sommet){
 		return this.first.equals(sommet) || this.second.equals(sommet);
 	}
-	
+
 	public boolean isColored() {
 		return this.first.isColored() && this.second.isColored();
 	}

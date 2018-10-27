@@ -1,5 +1,3 @@
-package tp4;
-
 import java.util.Comparator;
 
 public class ComparatorSommetParCouleur implements Comparator<Sommet>{

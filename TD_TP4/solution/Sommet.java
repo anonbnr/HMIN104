@@ -1,5 +1,3 @@
-package tp4;
-
 public class Sommet implements Cloneable{
 	/*attributes*/
 	private String valeur;
@@ -47,7 +45,7 @@ public class Sommet implements Cloneable{
 		Sommet sommet = (Sommet)obj;
 		return this.valeur.equals(sommet.valeur) && this.couleur == sommet.couleur;
 	}
-	
+
 	//clone
 	@Override
 	public Object clone() throws CloneNotSupportedException{
@@ -57,7 +55,7 @@ public class Sommet implements Cloneable{
 		clonedSommet.valeur = this.valeur;
 		return clonedSommet;
 	}
-	
+
 	//other methods
 	/**
 	 * teste si un sommet est colorié
