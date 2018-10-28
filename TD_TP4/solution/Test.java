@@ -72,18 +72,22 @@ public class Test {
 		System.out.println(petitGraphe);
 
 		try {
+			System.out.println("\n");
 			System.out.println("2-coloriage du petit graphe\n===========================");
 			petitGraphe = petitGraphe.colorierOptimiste(2);
 			System.out.println(petitGraphe);
 
 			petitGraphe = fillPetitGraphe();
+			System.out.println("\n");
 			System.out.println("3-coloriage du petit graphe\n===========================");
 			petitGraphe = petitGraphe.colorierOptimiste(3);
 			System.out.println(petitGraphe);
 
 			Graphe grandGraphe = fillGrandGraphe();
+			System.out.println("\n");
 			System.out.println("le grand graphe\n===============");
 			System.out.println(grandGraphe);
+			System.out.println("\n");
 			System.out.println("4-coloriage du grand graphe\n===========================");
 			grandGraphe = grandGraphe.colorierOptimiste(4);
 			System.out.println(grandGraphe);
