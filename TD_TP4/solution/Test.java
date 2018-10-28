@@ -65,10 +65,29 @@ public class Test {
 		return grandGraphe;
 	}
 
+	public static Graphe fillGrapheDiamant() {
+		ArrayList<Sommet> diamantVertices = new ArrayList<>();
+		diamantVertices.add(new Sommet("x"));
+		diamantVertices.add(new Sommet("y"));
+		diamantVertices.add(new Sommet("z"));
+		diamantVertices.add(new Sommet("t"));
+
+		ArrayList<Arete> diamantEdges = new ArrayList<>();
+		diamantEdges.add(new Arete(new Sommet("x"), new Sommet("y")));
+		diamantEdges.add(new Arete(new Sommet("y"), new Sommet("z")));
+		diamantEdges.add(new Arete(new Sommet("z"), new Sommet("t")));
+		diamantEdges.add(new Arete(new Sommet("t"), new Sommet("x")));
+
+		Graphe diamantGraphe = new Graphe(diamantVertices, diamantEdges);
+
+		return diamantGraphe;
+	}
+
 	public static void main(String[] args) throws CloneNotSupportedException {
 
 		Graphe petitGraphe = fillPetitGraphe();
-		System.out.println("le pretit graphe\n===============");
+		System.out.println("\n");
+		System.out.println("Pretit graphe\n===============");
 		System.out.println(petitGraphe);
 
 		try {
@@ -85,12 +104,21 @@ public class Test {
 
 			Graphe grandGraphe = fillGrandGraphe();
 			System.out.println("\n");
-			System.out.println("le grand graphe\n===============");
+			System.out.println("Grand graphe\n===============");
 			System.out.println(grandGraphe);
 			System.out.println("\n");
 			System.out.println("4-coloriage du grand graphe\n===========================");
 			grandGraphe = grandGraphe.colorierOptimiste(4);
 			System.out.println(grandGraphe);
+
+			Graphe diamantGraphe = fillGrapheDiamant();
+			System.out.println("\n");
+			System.out.println("Graphe diamant\n===============");
+			System.out.println(diamantGraphe);
+			System.out.println("\n");
+			System.out.println("2-coloriage du graphe diamant\n===========================");
+			diamantGraphe = diamantGraphe.colorierOptimiste(2);
+			System.out.println(diamantGraphe);
 
 		} catch (SommetNotFoundException | GrapheColorException e) {
 			e.printStackTrace();
